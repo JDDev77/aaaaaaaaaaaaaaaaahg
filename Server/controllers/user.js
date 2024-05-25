@@ -250,6 +250,7 @@ const list = (req, res) => {
     }
 };
 */
+/*
 const update2 = async (req, res) => {
     const userId = req.user.id; // Obtiene el ID del usuario desde el token de autenticación
 
@@ -302,6 +303,68 @@ const update2 = async (req, res) => {
         });
     }
 };
+*/
+
+
+// Actualizar usuario
+const update2 = async (req, res) => {
+    const userId = req.params.id; // Obtener el ID del usuario desde los parámetros de la URL
+
+    try {
+        let userToUpdate = req.body;
+
+        // Validación para no actualizar a otro usuario con el mismo email o nick
+        const existingUser = await User.findOne({
+            $or: [
+                { email: userToUpdate.email.toLowerCase(), _id: { $ne: userId } },
+                { nick: userToUpdate.nick.toLowerCase(), _id: { $ne: userId } }
+            ]
+        });
+
+        if (existingUser) {
+            return res.status(400).send({
+                status: "error",
+                message: "El email o nick ya está en uso por otro usuario"
+            });
+        }
+
+        // Cifrar la contraseña si se incluye en la actualización
+        if (userToUpdate.password) {
+            userToUpdate.password = await bcrypt.hash(userToUpdate.password, 10);
+        }
+
+        // Actualizar el usuario
+        const userUpdated = await User.findByIdAndUpdate(userId, userToUpdate, { new: true }).select('-password -__v');
+
+        if (!userUpdated) {
+            return res.status(404).send({ status: "error", message: "Usuario no encontrado" });
+        }
+
+        // Si se subió una imagen, actualizar la URL de la imagen en el usuario
+        if (req.file) {
+            userUpdated.image = req.file.path; // Suponiendo que req.file contiene la información de la imagen subida
+            await userUpdated.save();
+        }
+
+        return res.status(200).send({
+            status: "success",
+            message: "Usuario actualizado correctamente",
+            user: userUpdated
+        });
+    } catch (error) {
+        return res.status(500).send({
+            status: "error",
+            message: "Error al actualizar el usuario",
+            error
+        });
+    }
+};
+
+// Exportar acciones
+module.exports = {
+    // otras funciones...
+    update2
+}
 
 
 const update = (req, res) => {

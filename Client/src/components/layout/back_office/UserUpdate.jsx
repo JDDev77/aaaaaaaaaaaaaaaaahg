@@ -2,12 +2,11 @@ import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useForm } from '../../../hooks/useForm';
 import { Global } from '../../../helpers/Global';
-import avatar  from '../../../assets/img/user.png';
+import avatar from '../../../assets/img/user.png';
 
 export const UserUpdate = () => {
   const { userId } = useParams(); // ID del usuario desde la URL
   const navigate = useNavigate();
-  console.log(userId)
   const { form, changed, setForm } = useForm({
     name: '',
     surname: '',
@@ -27,11 +26,10 @@ export const UserUpdate = () => {
         method: 'GET',
         headers: { 
           "Content-Type": "application/json",
-                "Authorization": localStorage.getItem("token") 
+          "Authorization": localStorage.getItem("token")
         }
       });
       const data = await response.json();
-      console.log(data)
       if (data.status === 'success') {
         setForm(data.user);
       } else {
@@ -46,14 +44,15 @@ export const UserUpdate = () => {
     try {
       const response = await fetch(`${Global.url}user/update/${userId}`, {
         method: 'PUT',
-        headers: { 'Content-Type': 'application/json', 
-        'Authorization': localStorage.getItem("token")
-       },
+        headers: { 
+          'Content-Type': 'application/json', 
+          'Authorization': localStorage.getItem("token")
+        },
         body: JSON.stringify(form)
       });
       const data = await response.json();
-      console.log(data)
       if (data.status === 'success') {
+        
         setStatus({ saved: true, message: 'Usuario actualizado correctamente' });
         navigate('/admin/usuarios'); // Redirigir al listado de usuarios
       } else {
@@ -63,11 +62,11 @@ export const UserUpdate = () => {
       setStatus({ saved: false, message: 'Error de conexión con el servidor' });
     }
   };
-
+  
   return (
     <>
       <header className="content__header content__header--public">
-        <h1 className="content__title">Actualizar Usuario </h1>
+        <h1 className="content__title">Actualizar Usuario</h1>
       </header>
       <div className="content__posts">
         <strong className={`alert ${status.saved ? 'alert-success' : 'alert-danger'}`}>
@@ -77,6 +76,7 @@ export const UserUpdate = () => {
           <div className="form-group">
             <label htmlFor="name">Nombre</label>
             <input type="text" name="name" onChange={changed} value={form.name || ''} />
+            
           </div>
           <div className="form-group">
             <label htmlFor="surname">Apellido</label>
