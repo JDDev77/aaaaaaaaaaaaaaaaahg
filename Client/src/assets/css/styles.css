@@ -621,3 +621,7 @@ td {
     background-color: var(--color-background-btn-success-hover);
     border-color: var(--color-border-btn-success-hover);
 }
+
+textarea {
+    resize: none;
+}
