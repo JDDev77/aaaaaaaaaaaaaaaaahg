@@ -126,7 +126,7 @@ export const Config = () => {
                 `}
             </style>
             <header className="content__header content__header--public">
-                <h1 className="content__title">Registro</h1>
+                <h1 className="content__title">Editar perfil</h1>
             </header>
             <h1></h1>
             <div className="content__posts">

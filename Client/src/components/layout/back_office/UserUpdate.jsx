@@ -105,10 +105,6 @@ export const UserUpdate = () => {
               <option value="role_admin">Administrador</option>
             </select>
           </div>
-          <div className="form-group">
-            <label htmlFor="avatar">Avatar URL</label>
-            <input type="text" name="avatar" onChange={changed} value={form.avatar || ''} />
-          </div>
           <input type="submit" value="Actualizar" className="btn btn-success" />
         </form>
       </div>
