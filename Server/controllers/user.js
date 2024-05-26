@@ -80,7 +80,7 @@ const register = (req, res) => {
         });
     });
 }
-
+/*
 const login = (req, res) => {
     
     let params = req.body;
@@ -120,6 +120,51 @@ const login = (req, res) => {
                     name: user.name,
                     nick: user.nick,
                     role: user.role
+                },
+                token
+            });
+        });
+}
+*/
+
+const login = (req, res) => {
+    let params = req.body;
+    if (!params.email || !params.password) {
+        return res.status(400).send({
+            status: "error",
+            message: "Faltan datos por enviar"
+        });
+    }
+
+    // Buscar en la bbdd si existe
+    User.findOne({ email: params.email })
+        .exec((error, user) => {
+            if (error || !user) return res.status(404).send({ status: "error", message: "No existe el usuario" });
+
+            // Comprobar su contraseña
+            const pwd = bcrypt.compareSync(params.password, user.password);
+
+            if (!pwd) {
+                return res.status(400).send({
+                    status: "error",
+                    message: "No te has identificado correctamente"
+                });
+            }
+
+            // Conseguir Token
+            const token = jwt.createToken(user);
+
+            // Devolver Datos del usuario sin verificación adicional
+            return res.status(200).send({
+                status: "success",
+                message: "Te has identificado correctamente",
+                user: {
+                    id: user._id,
+                    name: user.name,
+                    nick: user.nick,
+                    email: user.email,
+                    role: user.role,
+                    image: user.image  // Incluye la imagen en la respuesta
                 },
                 token
             });
@@ -434,7 +479,7 @@ const update = (req, res) => {
 
     });
 }
-
+/*
 const upload = (req, res) => {
 
     // Recoger el fichero de imagen y comprobar que existe
@@ -481,6 +526,44 @@ const upload = (req, res) => {
         });
     });
 
+}
+*/
+const upload = (req, res) => {
+    if (!req.file) {
+        return res.status(404).send({
+            status: "error",
+            message: "Petición no incluye la imagen"
+        });
+    }
+
+    let image = req.file.originalname;
+    const imageSplit = image.split("\.");
+    const extension = imageSplit[imageSplit.length - 1];
+
+    if (extension !== "png" && extension !== "jpg" && extension !== "jpeg" && extension !== "gif") {
+        const filePath = req.file.path;
+        fs.unlinkSync(filePath);
+
+        return res.status(400).send({
+            status: "error",
+            message: "Extensión del fichero invalida"
+        });
+    }
+
+    User.findOneAndUpdate({ _id: req.user.id }, { image: req.file.filename }, { new: true }, (error, userUpdated) => {
+        if (error || !userUpdated) {
+            return res.status(500).send({
+                status: "error",
+                message: "Error en la subida del avatar"
+            });
+        }
+
+        return res.status(200).send({
+            status: "success",
+            user: userUpdated,
+            file: req.file,
+        });
+    });
 }
 
 const avatar = (req, res) => {
