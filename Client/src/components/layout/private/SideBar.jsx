@@ -174,7 +174,7 @@ export const SideBar = () => {
                         <form id="publication_form" className="container-form__form-post" onSubmit={savePublication}>
 
                             <div className="form-post__inputs">
-                                <label htmlFor="text" className="form-post__label">¿Qué estás pesando hoy?</label>
+                                <label htmlFor="text" className="form-post__label">¿Qué estás pensando hoy?</label>
                                 <textarea name="text" className="form-post__textarea" onChange={changed}/>
                             </div>
 
