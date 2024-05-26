@@ -1,5 +1,5 @@
 Usuarios normales:
-email:francisco.ruiz@example.com password:securePassword
+email:carla.ruiz@example.com password:securePassword
 email:carmen.gomez@example.com password:securePassword
 email:jose.martinez@example.com password:securePassword
 email:maria.lopez@example.com password:securePassword

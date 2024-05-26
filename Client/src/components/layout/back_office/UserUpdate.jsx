@@ -42,7 +42,7 @@ export const UserUpdate = () => {
   const saveUser = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch(`${Global.url}user/update/${userId}`, {
+      const response = await fetch(`${Global.url}user/update2/${userId}`, {
         method: 'PUT',
         headers: { 
           'Content-Type': 'application/json', 
