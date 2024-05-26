@@ -1,6 +1,7 @@
-import  { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { Global } from '../../../helpers/Global';
+import '../../../assets/css/styles.css';
 
 export const UserDetail = () => {
     const { userId } = useParams();
@@ -15,9 +16,8 @@ export const UserDetail = () => {
                     method: 'GET',
                     headers: {
                         'Authorization': localStorage.getItem("token")
-                      }
                     }
-                )
+                });
                 const data = await response.json();
                 if (response.ok) {
                     setUser(data.user);
@@ -42,18 +42,30 @@ export const UserDetail = () => {
 
     return (
         <>
-            <header className="content__header">
+            <header className="user-detail__header">
                 <h1>Detalles de usuario</h1>
             </header>
-            <div className="user-detail">
-                <h2>{user.name} {user.surname}</h2>
-                <p>Nickname: {user.nick}</p>
-                <p>Email: {user.email}</p>
-                <p>Bio: {user.bio}</p>
-                <p>Role: {user.role}</p>
-                <div>
-                    <button className="btn-update" onClick={() => navigate(`/admin/usuarios/actualizar/${user._id}`)}>Actualizar</button>
-                    <button className="btn-back" onClick={() => navigate(-1)}>Volver al listado</button>
+            <div className="user-detail__container">
+                <div className="user-detail__info">
+                    <div className="user-detail__text">
+                        <span className="user-detail__label">Nombre: </span>{user.name} {user.surname}
+                    </div>
+                    <div className="user-detail__text">
+                        <span className="user-detail__label">Nickname: </span>{user.nick}
+                    </div>
+                    <div className="user-detail__text">
+                        <span className="user-detail__label">Email: </span>{user.email}
+                    </div>
+                    <div className="user-detail__text">
+                        <span className="user-detail__label">Bio: </span>{user.bio}
+                    </div>
+                    <div className="user-detail__text">
+                        <span className="user-detail__label">Role: </span>{user.role}
+                    </div>
+                </div>
+                <div className="user-detail__actions">
+                    <button className="user-detail__button" onClick={() => navigate(`/admin/usuarios/actualizar/${user._id}`)}>Actualizar</button>
+                    <button className="user-detail__button" onClick={() => navigate(-1)}>Volver al listado</button>
                 </div>
             </div>
         </>

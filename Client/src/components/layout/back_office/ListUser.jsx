@@ -49,7 +49,7 @@ export const ListUser = () => {
         <div>
             <header className="content__header">
                 <h1 className="content__title">Usuarios</h1>
-                <NavLink to={"/admin/usuarios/nuevo"} className="post__button post__button--green">Agregar Nuevo Usuario</NavLink>
+                <NavLink to={"/admin/usuarios/nuevo"} className="post__button post__button--green">Agregar nuevo usuario</NavLink>
             </header>
             <UserList 
                 users={users} 

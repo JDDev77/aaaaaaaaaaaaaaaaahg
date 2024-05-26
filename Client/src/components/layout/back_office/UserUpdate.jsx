@@ -42,7 +42,7 @@ export const UserUpdate = () => {
   const saveUser = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch(`${Global.url}user/update/${userId}`, {
+      const response = await fetch(`${Global.url}user/update2/${userId}`, {
         method: 'PUT',
         headers: { 
           'Content-Type': 'application/json', 
@@ -66,7 +66,7 @@ export const UserUpdate = () => {
   return (
     <>
       <header className="content__header content__header--public">
-        <h1 className="content__title">Actualizar Usuario</h1>
+        <h1 className="content__title">Actualizar usuario</h1>
       </header>
       <div className="content__posts">
         <strong className={`alert ${status.saved ? 'alert-success' : 'alert-danger'}`}>
