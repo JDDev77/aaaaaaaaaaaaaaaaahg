@@ -171,7 +171,7 @@ export const UserList = ({ users, getUsers, following, setFollowing }) => {
                                 {auth.role === "role_admin" && (
                                     <>
                                         <Link to={`/admin/usuarios/actualizar/${user._id}`} className="post__button post__button--blue">Actualizar</Link>
-                                        <Link to={`/admin/usuarios/detalle/${user._id}`} className="post__button post__button--blue">Detalles</Link>
+                                        <Link to={`/admin/usuarios/detalle/${user._id}`} className="post__button post__button--yellow">Detalles</Link>
                                         <button onClick={() => deleteUser(user._id)} className="post__button post__button--red">Eliminar</button>
                                     </>
                                 )}

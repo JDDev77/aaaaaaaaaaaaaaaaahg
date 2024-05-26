@@ -9,11 +9,10 @@ export const Login = () => {
         saved: false,
         message: ''
     });
-    const {setAuth} = useAuth()
-    
+    const { setAuth } = useAuth();
+
     const loginUser = async (e) => {
         e.preventDefault();
-        console.log(form); // Datos de formulario
         let userToLogin = form;
 
         try {
@@ -25,24 +24,19 @@ export const Login = () => {
                 }
             });
             const data = await request.json();
-            console.log(data); // Persistir los datos en el navegador
 
             if (data.status === 'success') {
                 setStatus({
                     saved: true,
                     message: 'Usuario logueado correctamente'
                 });
-                localStorage.setItem("token", data.token)
-                localStorage.setItem("user", JSON.stringify(data.user))
-                // Aquí podrías también realizar otras acciones como guardar el token en localStorage
-                // Setear en el auth
-                setAuth(data.user)
+                localStorage.setItem("token", data.token);
+                localStorage.setItem("user", JSON.stringify(data.user));
+                setAuth(data.user);
 
-                //Redireccion, tarda 0.5 segundos para que le de tiempo al usuario que vea que va todo
-                //bien
                 setTimeout(() => {
-                  window.location.reload()
-                },100)
+                    window.location.reload();
+                }, 100);
             } else {
                 setStatus({
                     saved: false,
@@ -58,7 +52,7 @@ export const Login = () => {
     };
 
     return (
-        <>
+        <div className="center-content">
             <header className="content__header content__header--public">
                 <h1 className="content__title">Login</h1>
             </header>
@@ -70,16 +64,18 @@ export const Login = () => {
                 <form className="form-login" onSubmit={loginUser}>
                     <div className="form-group">
                         <label htmlFor="email">Email</label>
-                        <input type="email" name="email" onChange={changed}/>
+                        <input type="email" name="email" onChange={changed} />
                     </div>
                     
                     <div className="form-group">
                         <label htmlFor="password">Contraseña</label>
-                        <input type="password" name="password" onChange={changed}/>
+                        <input type="password" name="password" onChange={changed} />
                     </div>
-                    <input type="submit" value="Identifícate" className="btn btn-success"/>
+                    <input type="submit" value="Identifícate" className="btn btn-success" />
                 </form>
             </div>
-        </>
+        </div>
     );
 }
+
+export default Login;

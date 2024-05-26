@@ -43,7 +43,7 @@ export const UserDetail = () => {
     return (
         <>
             <header className="content__header">
-                <h1>User Details</h1>
+                <h1>Detalles de usuario</h1>
             </header>
             <div className="user-detail">
                 <h2>{user.name} {user.surname}</h2>
@@ -52,8 +52,8 @@ export const UserDetail = () => {
                 <p>Bio: {user.bio}</p>
                 <p>Role: {user.role}</p>
                 <div>
-                    <button onClick={() => navigate(`/admin/usuarios/actualizar/${user._id}`)}>Editar</button>
-                    <button onClick={() => navigate(-1)}>Back to List</button>
+                    <button className="btn-update" onClick={() => navigate(`/admin/usuarios/actualizar/${user._id}`)}>Actualizar</button>
+                    <button className="btn-back" onClick={() => navigate(-1)}>Volver al listado</button>
                 </div>
             </div>
         </>

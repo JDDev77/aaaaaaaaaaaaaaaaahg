@@ -5,6 +5,7 @@
     --color-text-navbar: white;
     --color-hover-navbar: #1756cc;
     --color-button-detail: #137ec5;
+    --color-button-update: #f6a706 ;
     --color-border-headers: #eee;
 
     --color-background-btn-success: #5cb85c;
@@ -12,6 +13,7 @@
     --color-background-btn-success-hover: #449d44;
     --color-border-btn-success-hover: #398439;
     --color-background-btn-datail-hover: #44469d;
+    --color-background-btn-update-hover: #e7d606;
     --color-border-btn-detail-hover: #44469d;
     --color-background-btn-delete: #d9534f;
     --color-border-btn-delete: #d43f3a;
@@ -27,6 +29,14 @@
 
     --color-border-textarea: #ccc;
     --color-border-textarea-focus: #66afe9;
+
+    --color-background-btn-update: #e7d606; /* Cambia esto por el color que prefieras */
+    --color-text-btn-update: #FFFFFF; /* Cambia esto por el color que prefieras */
+    --color-border-btn-update: #e7d606; /* Cambia esto por el color que prefieras */
+
+    --color-background-btn-back: #2559f4; /* Cambia esto por el color que prefieras */
+    --color-text-btn-back: #FFFFFF; /* Cambia esto por el color que prefieras */
+    --color-border-btn-back: #2559f4; /* Cambia esto por el color que prefieras */
 
 }
 
@@ -123,11 +133,13 @@ body {
     padding: 0.6rem;
 }
 
-.list-end__img{
-    width: 4rem;
-    height: 4rem;
-    border-radius: 3.2rem;
-}
+.list-end__img {
+    width: 6rem; /* Ajusta el tamaño según tus necesidades */
+    height: 5rem; /* Ajusta el tamaño según tus necesidades */
+    border-radius: 3rem;
+    margin-left: 2rem; /* Ajusta el margen izquierdo para mover la imagen hacia la derecha */
+  }
+  
 
 .list-end__link{
     padding: 1.8rem;
@@ -156,7 +168,7 @@ body {
     display: flex;
     flex-direction: row;
     align-items: center;
-   
+    
 }
 
 .content__title, .aside__title{
@@ -262,6 +274,11 @@ body {
     border-color: var( --color-button-detail);
 }
 
+.post__button--yellow{
+    background-color: var( --color-button-update);
+    border-color: var( --color-button-detail);
+}
+
 .post__button:hover{
     background-color: var(--color-background-btn-delete-hover);
     border-color: var(--color-border-btn-delete-hover);
@@ -276,6 +293,12 @@ body {
     background-color: var(--color-background-btn-datail-hover);
     border-color: var(--color-border-btn-detail-hover);
 }
+
+.post__button--yellow:hover{
+    background-color: var(--color-background-btn-update-hover);
+    border-color: var(--color-border-btn-detail-hover);
+}
+
 .content__container-btn{
     width: 100%;
     display: flex;
@@ -389,8 +412,15 @@ body {
     width: 100%;
 }
 
-form{
-    max-width: 300px;
+form {
+    width: 100%;
+    max-width: 400px; /* Ajusta el ancho máximo del formulario */
+    padding: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 1rem 0;
 }
 
 .aside__container-form form{
@@ -432,7 +462,7 @@ textarea{
 .form-post__textarea:focus,
 input[type="text"]:focus,
 input[type="email"]:focus,
-input[type="password"]:focus
+input[type="password"]:focus,
 textarea:focus{
     border-color: var(--color-border-textarea-focus);
     box-shadow: inset 0 1px 1px rgb(0 0 0 / 8%), 0 0 8px rgb(102 175 233 / 60%);
@@ -473,4 +503,64 @@ button{
     background-color: #ec1b1b;
     border: 1px solid #ec1b1b;
     color: white;
+}
+.btn-update {
+    background-color: var(--color-background-btn-update);
+    color: var(--color-text-btn-update) !important;
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--color-border-btn-update);
+    border-radius: 0.3rem;
+    font-size: 1.2rem;
+    line-height: 1.5;
+    cursor: pointer;
+    font-size: 1.4rem;
+}
+
+.btn-update:hover {
+    background-color: #e7a506; /* Color medio naranja para hover */
+    border-color: #e7a506;
+}
+
+.btn-back {
+    background-color: var(--color-background-btn-back);
+    color: var(--color-text-btn-back) !important;
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--color-border-btn-back);
+    border-radius: 0.3rem;
+    font-size: 1.2rem;
+    line-height: 1.5;
+    cursor: pointer;
+    font-size: 1.4rem;
+}
+
+.btn-back:hover {
+    background-color: #0033cc; /* Color medio azul para hover */
+    border-color: #0033cc;
+}
+
+.navbar__icon {
+    width: 4rem; /* Tamaño ajustado */
+    height: 4rem; /* Tamaño ajustado */
+    border-radius: 50%;
+    margin-left: 1rem; /* Ajuste de margen izquierdo para mover el icono a la derecha */
+  }
+
+  .navbar__icon_admin {
+    width: 5rem; /* Tamaño ajustado */
+    height: 4rem; /* Tamaño ajustado */
+    border-radius: 50%;
+    margin-left: 0.5rem; /* Ajuste de margen izquierdo para mover el icono a la derecha */
+  }
+
+  
+table {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    border-collapse: collapse;
+}
+
+td {
+    padding: 8px;
+    font-size: 16px;
 }

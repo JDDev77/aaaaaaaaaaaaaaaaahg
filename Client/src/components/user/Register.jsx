@@ -15,7 +15,6 @@ export const Register = () => {
     const saveUser = async (e) => {
         e.preventDefault();
 
-        // Validación de campos requeridos
         const requiredFields = ['name', 'surname', 'nick', 'email', 'password'];
         for (let field of requiredFields) {
             if (!form[field]) {
@@ -33,7 +32,6 @@ export const Register = () => {
             }
         }
 
-        // Envío de datos al servidor
         try {
             const response = await fetch(`${Global.url}user/register`, {
                 method: 'POST',
@@ -85,20 +83,20 @@ export const Register = () => {
     };
 
     return (
-        <>
+        <div className="center-content">
             <style>
                 {`
                     .large-swal-popup {
-                        width: 600px !important; /* Ajusta el tamaño a tu preferencia */
-                        font-size: 1.2em; /* Ajusta el tamaño de la fuente a tu preferencia */
+                        width: 600px !important;
+                        font-size: 1.2em;
                     }
 
                     .large-swal-title {
-                        font-size: 2em !important; /* Ajusta el tamaño del título a tu preferencia */
+                        font-size: 2em !important;
                     }
 
                     .large-swal-content {
-                        font-size: 1.2em !important; /* Ajusta el tamaño del contenido a tu preferencia */
+                        font-size: 1.2em !important;
                     }
                 `}
             </style>
@@ -134,6 +132,8 @@ export const Register = () => {
                     <input type="submit" value="Regístrate" className="btn btn-success" />
                 </form>
             </div>
-        </>
+        </div>
     );
-};
+}
+
+export default Register
