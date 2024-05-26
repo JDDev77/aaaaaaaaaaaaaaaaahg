@@ -80,6 +80,66 @@ const register = (req, res) => {
         });
     });
 }
+const registerAdmin = async (req, res) => {
+    try {
+        // Recoger datos del body
+        let { name, surname, nick, email, password, role } = req.body;
+
+        // Validar datos obligatorios
+        if (!name || !surname || !nick || !email || !password || !role) {
+            return res.status(400).json({ message: "Todos los campos son obligatorios" });
+        }
+
+        // Comprobar si el usuario ya existe
+        const existingUser = await User.findOne({ email });
+        if (existingUser) {
+            return res.status(400).json({ message: "El usuario ya existe" });
+        }
+
+        // Cifrar la contraseña
+        const hashedPassword = await bcrypt.hash(password, 12);
+
+        // Asignar imagen por defecto para el rol admin
+        let image = req.body.image || "";
+        if (role === 'role_admin') {
+            image = "admin.png";
+
+            // Ruta de la imagen en el directorio del cliente
+            const imagePathClient = path.resolve(__dirname, "../../Client/src/assets/img/admin.png");
+            // Ruta de destino en el servidor
+            const imagePathServer = path.resolve(__dirname, "../uploads/avatars/admin.png");
+
+            // Copiar la imagen si no existe ya
+            if (!fs.existsSync(imagePathServer)) {
+                fs.copyFileSync(imagePathClient, imagePathServer);
+            }
+        }
+
+        // Crear el nuevo usuario
+        const user = new User({
+            name,
+            surname,
+            bio: req.body.bio || "",
+            nick,
+            email,
+            password: hashedPassword,
+            role,
+            image
+        });
+
+        // Guardar el usuario en la base de datos
+        await user.save();
+
+        return res.status(200).json({
+            status: 'success',
+            user
+        });
+    } catch (error) {
+        return res.status(500).json({ message: "Error al registrar el usuario", error });
+    }
+};
+/*
+*registerAdmin */
 /*
 const login = (req, res) => {
     
@@ -657,5 +717,6 @@ module.exports = {
     avatar,
     counters,
     removeUser,
-    update2
+    update2,
+    registerAdmin
 }

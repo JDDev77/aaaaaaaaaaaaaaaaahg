@@ -47,7 +47,7 @@ const users = [
     { 
         name: 'Eventos', 
         surname: 'Locales', 
-        bio: 'Siguenos para saber todo lo que se cuece en la ciudad!! Nuestro grupo de telegram es: https://t.me/eventoslocales y nuestro teléfono es: 111-111-111', 
+        bio: 'Siguenos para saber todos los eventos de la ciudad.', 
         nick: 'EVENTOS', 
         email: 'eventos@example.com', 
         password: 'securePassword', 

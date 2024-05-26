@@ -28,7 +28,7 @@ export const UserForm = () => {
 
         // Envío de datos al servidor
         try {
-            const response = await fetch(`${Global.url}user/register`, {
+            const response = await fetch(`${Global.url}user/registerAdmin`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(form)
