@@ -66,7 +66,7 @@ export const UserUpdate = () => {
   return (
     <>
       <header className="content__header content__header--public">
-        <h1 className="content__title">Actualizar Usuario</h1>
+        <h1 className="content__title">Actualizar usuario</h1>
       </header>
       <div className="content__posts">
         <strong className={`alert ${status.saved ? 'alert-success' : 'alert-danger'}`}>
@@ -104,10 +104,6 @@ export const UserUpdate = () => {
               <option value="role_user">Usuario</option>
               <option value="role_admin">Administrador</option>
             </select>
-          </div>
-          <div className="form-group">
-            <label htmlFor="avatar">Avatar URL</label>
-            <input type="text" name="avatar" onChange={changed} value={form.avatar || ''} />
           </div>
           <input type="submit" value="Actualizar" className="btn btn-success" />
         </form>

@@ -171,9 +171,6 @@ export const SideBar = () => {
                     </div>
 
                     <div className="aside__container-form">
-                        {stored === "stored" ? <strong className="alert alert-success">Publicada correctamente</strong> : null}
-                        {stored === "error" ? <strong className="alert alert-danger">Error en la publicación</strong> : null}
-
                         <form id="publication_form" className="container-form__form-post" onSubmit={savePublication}>
 
                             <div className="form-post__inputs">

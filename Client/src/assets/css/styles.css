@@ -134,7 +134,7 @@ body {
 }
 
 .list-end__img {
-    width: 6rem; /* Ajusta el tamaño según tus necesidades */
+    width: 5rem; /* Ajusta el tamaño según tus necesidades */
     height: 5rem; /* Ajusta el tamaño según tus necesidades */
     border-radius: 3rem;
     margin-left: 2rem; /* Ajusta el margen izquierdo para mover la imagen hacia la derecha */
@@ -563,4 +563,61 @@ table {
 td {
     padding: 8px;
     font-size: 16px;
+}
+
+/* User Detail Styles */
+.user-detail__container {
+    padding: 2rem;
+    border: 1px solid var(--color-border-post);
+    border-radius: 0.5rem;
+    background-color: #fff;
+    max-width: 600px;
+    margin: 2rem auto;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.user-detail__header {
+    background-color: var(--color-backgroud-navbar);
+    color: var(--color-text-navbar);
+    padding: 1rem;
+    border-radius: 0.5rem 0.5rem 0 0;
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.user-detail__info {
+    padding: 1rem;
+}
+
+.user-detail__label {
+    font-weight: bold;
+    color: var(--color-text-black);
+}
+
+.user-detail__text {
+    margin-bottom: 1rem;
+    color: var(--color-general-text);
+}
+
+.user-detail__actions {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 0;
+}
+
+.user-detail__button {
+    background-color: var(--color-background-btn-success);
+    border: 1px solid var(--color-border-btn-success);
+    color: var(--color-text-navbar);
+    padding: 0.5rem 1rem;
+    border-radius: 0.3rem;
+    cursor: pointer;
+    text-align: center;
+    font-size: 1.2rem;
+}
+
+.user-detail__button:hover {
+    background-color: var(--color-background-btn-success-hover);
+    border-color: var(--color-border-btn-success-hover);
 }

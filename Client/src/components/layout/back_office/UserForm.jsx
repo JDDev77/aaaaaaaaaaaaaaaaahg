@@ -49,7 +49,7 @@ export const UserForm = () => {
     return (
         <>
             <header className="content__header content__header--public">
-                <h1 className="content__title">Agregar Nuevo Usuario</h1>
+                <h1 className="content__title">Agregar nuevo usuario</h1>
             </header>
             <div className="content__posts">
                 <strong className={`alert ${status.saved ? 'alert-success' : 'alert-danger'}`}>
@@ -87,7 +87,7 @@ export const UserForm = () => {
                             <option value="role_admin">Administrador</option>
                         </select>
                     </div>
-                    <input type="submit" value="Regístrate" className="btn btn-success" />
+                    <input type="submit" value="Crear" className="btn btn-success" />
                 </form>
             </div>
         </>
