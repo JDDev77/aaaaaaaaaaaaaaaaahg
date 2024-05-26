@@ -26,11 +26,12 @@ router.post("/login", UserContoller.login);
 router.get("/profile/:id", check.auth, UserContoller.profile);
 router.get("/list/:page?", check.auth, UserContoller.list);
 router.put("/update", check.auth, UserContoller.update);
-router.put("/update/:id", check.auth, UserContoller.update2);
+router.put("/update2/:id", check.auth, UserContoller.update2);
 router.delete('/delete/:id',check.auth, UserContoller.removeUser);
 router.post("/upload", [check.auth, uploads.single("file0")], UserContoller.upload);
 router.get("/avatar/:file", UserContoller.avatar); // TODO mirar como meter foto distinta cambio 
 router.get("/counters/:id", check.auth, UserContoller.counters);
+router.get("/list2/:page?",check.auth, UserContoller.list2 )
 //Rutas BackOffice TODO revisar como no duplicar codigo
 
 // Exportar router

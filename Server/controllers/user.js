@@ -17,6 +17,32 @@ const pruebaUser = (req, res) => {
         usuario: req.user
     });
 }
+const list2 = async (req, res) => {
+    try {
+        const page = req.params.page ? parseInt(req.params.page, 10) : 1;
+        const itemsPerPage = 10;
+
+        const users = await User.find()
+            .sort('_id')
+            .skip((page - 1) * itemsPerPage)
+            .limit(itemsPerPage)
+            .exec();
+
+        const totalUsers = await User.countDocuments();
+
+        return res.status(200).json({
+            users,
+            totalUsers,
+            pages: Math.ceil(totalUsers / itemsPerPage),
+            pageSize: itemsPerPage,
+        });
+    } catch (err) {
+        return res.status(500).json({
+            status: 'error',
+            message: 'Error al listar los usuarios',
+        });
+    }
+};
 
 // Regristro de usuarios
 const register = (req, res) => {
@@ -465,6 +491,7 @@ const update2 = async (req, res) => {
     }
 };
 
+
 // Exportar acciones
 module.exports = {
     // otras funciones...
@@ -718,5 +745,6 @@ module.exports = {
     counters,
     removeUser,
     update2,
-    registerAdmin
+    registerAdmin,
+    list2
 }

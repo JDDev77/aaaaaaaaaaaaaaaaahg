@@ -52,7 +52,7 @@ const users = [
     { name: 'María', surname: 'López', bio: 'Jubilada, entusiasta del bordado y la cocina tradicional.', nick: 'mariaBordadora', email: 'maria.lopez@example.com', password: 'securePassword', image: 'chica1.png' },
     { name: 'José', surname: 'Martínez', bio: 'Jubilado, disfruta de la pesca y las tardes de dominó con amigos.', nick: 'josePescador', email: 'jose.martinez@example.com', password: 'securePassword', image: 'chico2.png' },
     { name: 'Carmen', surname: 'Gómez', bio: 'Jubilada, apasionada por la lectura y las tertulias literarias.', nick: 'carmenLectora', email: 'carmen.gomez@example.com', password: 'securePassword', image: 'chica2.png' },
-    { name: 'Carla', surname: 'Ruiz', bio: 'Jubilada, dedica su tiempo al bricolaje y las manualidades.', nick: 'franciscoBricolaje', email: 'francisco.ruiz@example.com', password: 'securePassword', image: 'chica3.png' }
+    { name: 'Carla', surname: 'Ruiz', bio: 'Jubilada, dedica su tiempo al bricolaje y las manualidades.', nick: 'carlaBricolaje', email: 'carla.ruiz@example.com', password: 'securePassword', image: 'chica3.png' }
 ];
 
 const ejecutar = async () => {
