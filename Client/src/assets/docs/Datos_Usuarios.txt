@@ -1,0 +1,14 @@
+Usuarios normales:
+email:francisco.ruiz@example.com password:securePassword
+email:carmen.gomez@example.com password:securePassword
+email:jose.martinez@example.com password:securePassword
+email:maria.lopez@example.com password:securePassword
+email:antonio.garcia@example.com password:securePassword
+
+Usuarios especiales:
+email:eventos@example.com password:securePassword
+email:talleres@example.com password:securePassword
+email:voluntariado@example.com password:securePassword
+
+Admin:
+email:admin@example.com   password:securePassword
