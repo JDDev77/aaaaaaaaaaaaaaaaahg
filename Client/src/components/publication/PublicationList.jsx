@@ -1,4 +1,4 @@
-/* eslint-disable react/prop-types */
+import PropTypes from 'prop-types';
 import { Link } from "react-router-dom";
 import Global from "../../helpers/Global";
 import avatar from "../../assets/img/user.png";
@@ -99,6 +99,20 @@ export const PublicationList = ({ publications, page, setPage, more, setMore, ge
                     .large-swal-content {
                         font-size: 1.2em !important; /* Ajusta el tamaño del contenido a tu preferencia */
                     }
+
+                    .post__image-content {
+                        width: 100%; /* Ajusta esto según tu preferencia */
+                        max-width: 800px; /* Ajusta esto según tu preferencia */
+                        height: auto; /* Mantiene la proporción de la imagen */
+                        display: block;
+                        margin: 10px 0; /* Ajusta el margen superior e inferior */
+                    }
+
+                    .post__container {
+                        display: flex;
+                        flex-direction: column;
+                        align-items: flex-start; /* Alinear a la izquierda */
+                    }
                 `}
             </style>
             <div className="content__posts">
@@ -125,7 +139,7 @@ export const PublicationList = ({ publications, page, setPage, more, setMore, ge
                                     </a>
                                 </div>
                                 <h4 className="post__content">{publication.text}</h4>
-                                {publication.file && <img src={`${Global.url}publication/media/${publication.file}`} alt="Contenido" />}
+                                {publication.file && <img src={`${Global.url}publication/media/${publication.file}`} className="post__image-content" alt="Contenido" />}
                             </div>
                         </div>
                         {(auth._id === publication.user._id || auth.role === 'role_admin') && (
@@ -147,4 +161,14 @@ export const PublicationList = ({ publications, page, setPage, more, setMore, ge
             )}
         </>
     );
+};
+
+// Definir los tipos de propiedades esperadas
+PublicationList.propTypes = {
+    publications: PropTypes.array.isRequired,
+    page: PropTypes.number.isRequired,
+    setPage: PropTypes.func.isRequired,
+    more: PropTypes.bool.isRequired,
+    setMore: PropTypes.func.isRequired,
+    getPublications: PropTypes.func.isRequired,
 };

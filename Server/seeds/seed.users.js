@@ -14,22 +14,21 @@ mongoose.connect('mongodb://localhost:27017/mi_redsocial', {
     console.error('Error al conectar a la base de datos:', err);
 });
 
-// Ruta de la imagen de origen John
-const imagePathJohn = path.resolve(__dirname, "../../Client/src/assets/img/chico1.png");
-const destPathJohn = path.resolve(__dirname, "../uploads/avatars/chico1.png");
-// Ruta de la imagen de origen Jane
-const imagePathJane = path.resolve(__dirname, "../../Client/src/assets/img/chica1.png");
-const destPathJane = path.resolve(__dirname, "../uploads/avatars/chica1.png");
-// Ruta de la imagen de origen Mike
-const imagePathMike = path.resolve(__dirname, "../../Client/src/assets/img/chico2.png");
-const destPathMike = path.resolve(__dirname, "../uploads/avatars/chico2.png");
-// Ruta de la imagen de origen Rachel
-const imagePathRachel = path.resolve(__dirname, "../../Client/src/assets/img/chica2.png");
-const destPathRachel = path.resolve(__dirname, "../uploads/avatars/chica2.png");
-// Ruta de la imagen de origen Lesley
-const imagePathLesley = path.resolve(__dirname, "../../Client/src/assets/img/chica3.png");
-const destPathLesley = path.resolve(__dirname, "../uploads/avatars/chica3.png");
+// Ruta de la imagen de origen
+const imagePathAntonio = path.resolve(__dirname, "../../Client/src/assets/img/chico1.png");
+const destPathAntonio = path.resolve(__dirname, "../uploads/avatars/chico1.png");
 
+const imagePathMaria = path.resolve(__dirname, "../../Client/src/assets/img/chica1.png");
+const destPathMaria = path.resolve(__dirname, "../uploads/avatars/chica1.png");
+
+const imagePathJose = path.resolve(__dirname, "../../Client/src/assets/img/chico2.png");
+const destPathJose = path.resolve(__dirname, "../uploads/avatars/chico2.png");
+
+const imagePathCarmen = path.resolve(__dirname, "../../Client/src/assets/img/chica2.png");
+const destPathCarmen = path.resolve(__dirname, "../uploads/avatars/chica2.png");
+
+const imagePathCarla = path.resolve(__dirname, "../../Client/src/assets/img/chica3.png");
+const destPathCarla = path.resolve(__dirname, "../uploads/avatars/chica3.png");
 
 // Función para copiar archivos
 const copyImage = (src, dest) => {
@@ -42,17 +41,18 @@ const copyImage = (src, dest) => {
 };
 
 // Copiar la imagen a la carpeta de destino
-copyImage(imagePathJohn, destPathJohn);
-copyImage(imagePathJane, destPathJane);
-copyImage(imagePathMike, destPathMike);
-copyImage(imagePathRachel, destPathRachel);
-copyImage(imagePathLesley, destPathLesley);
+copyImage(imagePathAntonio, destPathAntonio);
+copyImage(imagePathMaria, destPathMaria);
+copyImage(imagePathJose, destPathJose);
+copyImage(imagePathCarmen, destPathCarmen);
+copyImage(imagePathCarla, destPathCarla);
+
 const users = [
-    { name: 'John', surname: 'Doe', bio: 'Desarrollador Full Stack.', nick: 'johnFullStack', email: 'john@example.com', password: 'password123', image: 'chico1.png' },
-    { name: 'Jane', surname: 'Doe', bio: 'Ingeniera de Software.', nick: 'janeEngineer', email: 'jane@example.com', password: 'password456', image: 'chica1.png' },
-    { name: 'Mike', surname: 'Ross', bio: 'Analista de Sistemas.', nick: 'mikeAnalyst', email: 'mike@example.com', password: 'password789', image: 'chico2.png' },
-    { name: 'Rachel', surname: 'Zane', bio: 'Desarrolladora Frontend.', nick: 'rachelFrontend', email: 'rachel@example.com', password: 'password101112', image: 'chica2.png' },
-    { name: 'Lesley', surname: 'Specter', bio: 'Gerente de Proyecto.', nick: 'LesleyManager', email: 'Lesleyy@example.com', password: 'password131415', image: 'chica3.png' }
+    { name: 'Antonio', surname: 'García', bio: 'Jubilado, amante de la jardinería y paseos al aire libre.', nick: 'antonioJardinero', email: 'antonio.garcia@example.com', password: 'securePassword', image: 'chico1.png' },
+    { name: 'María', surname: 'López', bio: 'Jubilada, entusiasta del bordado y la cocina tradicional.', nick: 'mariaBordadora', email: 'maria.lopez@example.com', password: 'securePassword', image: 'chica1.png' },
+    { name: 'José', surname: 'Martínez', bio: 'Jubilado, disfruta de la pesca y las tardes de dominó con amigos.', nick: 'josePescador', email: 'jose.martinez@example.com', password: 'securePassword', image: 'chico2.png' },
+    { name: 'Carmen', surname: 'Gómez', bio: 'Jubilada, apasionada por la lectura y las tertulias literarias.', nick: 'carmenLectora', email: 'carmen.gomez@example.com', password: 'securePassword', image: 'chica2.png' },
+    { name: 'Carla', surname: 'Ruiz', bio: 'Jubilada, dedica su tiempo al bricolaje y las manualidades.', nick: 'franciscoBricolaje', email: 'francisco.ruiz@example.com', password: 'securePassword', image: 'chica3.png' }
 ];
 
 const ejecutar = async () => {
@@ -70,4 +70,3 @@ const ejecutar = async () => {
 };
 
 ejecutar();
-
